@@ -1,0 +1,23 @@
+/* lightbox-white.css */
+.yarl__container {
+    background-color: white !important;
+  }
+
+  .yarl__button {
+    color: #acacac9c !important; /* soft grey */
+  }
+  
+  .yarl__button svg {
+    stroke: #000000 !important;
+    fill: none !important;
+  }
+  
+  /* White background for lightbox */
+.yarl__container {
+  background-color: white !important;
+}
+
+/* Grey X and arrows */
+.yarl__icon {
+  color: grey !important;
+}
