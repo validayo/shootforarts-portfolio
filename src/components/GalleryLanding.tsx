@@ -19,12 +19,13 @@ const images = [
 ];
 
 const breakpointColumnsObj = {
-  default: 5,
-  1536: 4,
-  1280: 3,
-  1024: 2,
-  640: 1,
-};
+    default: 5,  // 🟨 5 columns on large screens
+    1536: 4,     // 4 columns on ~2K
+    1280: 3,     // 3 columns on laptops
+    1024: 2,     // tablets
+    640: 1,      // mobile
+  };
+  
 
 export default function GalleryLanding() {
   const [index, setIndex] = useState(-1);
@@ -42,6 +43,7 @@ export default function GalleryLanding() {
         <h1 className="text-3xl tracking-widest font-light text-gray-700">
           <span className="font-semibold">SHOOT FOR </span><em>ARTS</em>
         </h1>
+
         <nav className="mt-2 text-sm tracking-wide space-x-4">
           {[
             { path: '/', label: 'overview' },
@@ -81,7 +83,7 @@ export default function GalleryLanding() {
       </div>
 
       {/* GALLERY */}
-      <main className="pt-6 px-2 sm:px-2 md:px-4">
+      <main className="max-w-screen-xl mx-auto px-2 sm:px-2 md:px-4 pt-6">
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="flex gap-2"
@@ -90,20 +92,21 @@ export default function GalleryLanding() {
           {filteredImages.map(({ src }, i) => (
             <div
               key={i}
-              className="relative group cursor-zoom-in"
+              className="relative group cursor-zoom-in aspect-[4/5]"
               onClick={() => setIndex(i)}
             >
               <img
-                src={src}
-                alt={`photo-${i}`}
-                className="w-full h-auto object-cover 
-                  blur-sm scale-105 transition duration-500 ease-out 
-                  group-hover:brightness-75 group-hover:blur-0 group-hover:scale-100"
-                loading="lazy"
-                onLoad={(e) => {
-                  e.currentTarget.classList.remove('blur-sm', 'scale-105');
-                }}
-              />
+  src={src}
+  alt={`photo-${i}`}
+  className="w-full h-auto object-cover 
+    blur-sm scale-105 transition duration-500 ease-out 
+    group-hover:brightness-75 group-hover:blur-0 group-hover:scale-100"
+  loading="lazy"
+  onLoad={(e) => {
+    e.currentTarget.classList.remove('blur-sm', 'scale-105');
+  }}
+/>
+
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-sm font-medium">
                 Click to view
               </div>
